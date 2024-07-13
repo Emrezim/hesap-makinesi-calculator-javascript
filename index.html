@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hesap Makinesi</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.png" type="image/x-icon">
+</head>
+<body>
+    <div class="calculator">
+        <h1>
+            
+            <img src="logo.png" alt="Calculator Icon">
+        </h1>
+        <br>
+        <br>
+        <br>
+        <h1>HESAP MAKİNESİ</h1>
+        <input type="number" id="num1" placeholder="Birinci Sayı">
+        <input type="number" id="num2" placeholder="İkinci Sayı">
+        <div>
+            <button onclick="calculate('+')">+</button>
+            <button onclick="calculate('-')">-</button>
+        </div>
+        <div>
+            <button onclick="calculate('*')">x</button>
+            <button onclick="calculate('/')">/</button>
+        </div>
+        <p>Sonuç: <span id="result"></span></p>
+        <div id="error-message1" class="error-message"></div>
+        <div id="error-message2" class="error-message"></div>
+    </div>
+   
+    
+
+    <script>
+         function calculate(operation) {
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var num2 = parseFloat(document.getElementById('num2').value);
+            var result;
+
+            var errorMessage1 = document.getElementById('error-message1');
+            var errorMessage2 = document.getElementById('error-message2');
+
+            // Kontrol ve uyarılar
+            if (isNaN(num1)) {
+                errorMessage1.innerText = "Lütfen birinci sayıyı giriniz.";
+                errorMessage2.innerText = "";
+                return;
+            } else {
+                errorMessage1.innerText = "";
+            }
+
+            if (isNaN(num2)) {
+                errorMessage2.innerText = "Lütfen ikinci sayıyı giriniz.";
+                return;
+            } else {
+                errorMessage2.innerText = "";
+            }
+
+            // Hesaplama
+            if (operation === '+') {
+                result = num1 + num2;
+            } else if (operation === '-') {
+                result = num1 - num2;
+            } else if (operation === '*') {
+                result = num1 * num2;
+            } else if (operation === '/') {
+                result = num1 / num2;
+            }
+
+            document.getElementById('result').innerText = result;
+        }
+    </script>
+</body>
+</html>
